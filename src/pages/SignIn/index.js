@@ -3,12 +3,12 @@ import { View, Text } from 'react-native';
 
 // import { Container } from './styles';
 
-const src = () => {
+const SignIn = () => {
   return (
     <View>
-      <Text>Olá mundo 2!!!!!</Text>
+      <Text>SignIn</Text>
     </View>
   );
 };
 
-export default src;
+export default SignIn;
