@@ -16,6 +16,7 @@ import {
 import logo from '~/assets/logo.png';
 
 const SignIn = ({ navigation }) => {
+  console.tron.log('teste');
   const handleSubmit = () => {};
   const passwordRef = useRef();
   return (
