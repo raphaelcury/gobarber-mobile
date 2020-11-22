@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Image } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Background from '~/components/Background';
@@ -15,11 +16,22 @@ import {
 
 import logo from '~/assets/logo.png';
 
+import { signupRequest } from '~/store/modules/auth/actions';
+
 const SignUp = ({ navigation }) => {
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.auth.loading);
+
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    dispatch(signupRequest(name, email, password));
+  };
 
   return (
     <Background>
@@ -32,6 +44,8 @@ const SignUp = ({ navigation }) => {
             placeholder="Digite seu nome"
             returnKeyType="next"
             onSubmitEditing={() => emailRef.current.focus()}
+            value={name}
+            onChangeText={setName}
           />
           <FormInput
             icon="mail-outline"
@@ -42,6 +56,8 @@ const SignUp = ({ navigation }) => {
             ref={emailRef}
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
+            value={email}
+            onChangeText={setEmail}
           />
           <FormInput
             icon="lock-outline"
@@ -50,8 +66,12 @@ const SignUp = ({ navigation }) => {
             placeholder="Digite sua senha"
             returnKeyType="send"
             onSubmitEditing={handleSubmit}
+            value={password}
+            onChangeText={setPassword}
           />
-          <SubmitButton onPress={handleSubmit}>Acessar</SubmitButton>
+          <SubmitButton loading={loading} onPress={handleSubmit}>
+            Criar Conta
+          </SubmitButton>
         </Form>
         <SignLink
           onPress={() => {

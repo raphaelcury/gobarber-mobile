@@ -30,7 +30,6 @@ function* signUp({ payload }) {
       name,
       email,
       password,
-      provider: true,
     });
     const user = response.data;
     Alert.alert('Sucesso', `Usuário ${user.name} criado com sucesso.`);

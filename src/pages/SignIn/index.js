@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Image } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Background from '~/components/Background';
@@ -15,9 +16,19 @@ import {
 
 import logo from '~/assets/logo.png';
 
+import { signinRequest } from '~/store/modules/auth/actions';
+
 const SignIn = ({ navigation }) => {
-  console.tron.log('teste');
-  const handleSubmit = () => {};
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.auth.loading);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = () => {
+    dispatch(signinRequest(email, password));
+  };
+
   const passwordRef = useRef();
   return (
     <Background>
@@ -32,6 +43,8 @@ const SignIn = ({ navigation }) => {
             placeholder="Digite seu e-mail"
             returnKeyType="next"
             onSubmitEditing={() => passwordRef.current.focus()}
+            value={email}
+            onChangeText={setEmail}
           />
           <FormInput
             icon="lock-outline"
@@ -40,8 +53,12 @@ const SignIn = ({ navigation }) => {
             ref={passwordRef}
             returnKeyType="send"
             onSubmitEditing={handleSubmit}
+            value={password}
+            onChangeText={setPassword}
           />
-          <SubmitButton onPress={handleSubmit}>Acessar</SubmitButton>
+          <SubmitButton loading={loading} onPress={handleSubmit}>
+            Acessar
+          </SubmitButton>
         </Form>
         <SignLink
           onPress={() => {
