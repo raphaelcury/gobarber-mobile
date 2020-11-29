@@ -30,12 +30,12 @@ const Home = () => {
       <Tab.Screen
         name="Dashboard"
         component={Dashboard}
-        options={{ tabBarIcon: dashBoardIcon }}
+        options={{ tabBarIcon: dashBoardIcon, tabBarLabel: 'Agendamentos' }}
       />
       <Tab.Screen
         name="Profile"
         component={Profile}
-        options={{ tabBarIcon: profileIcon }}
+        options={{ tabBarIcon: profileIcon, tabBarLabel: 'Perfil' }}
       />
     </Tab.Navigator>
   );
