@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 
-// import { Container } from './styles';
+import Background from '~/components/Background';
 
 const Dashboard = () => {
   return (
-    <View>
+    <Background>
       <Text>Dashboard</Text>
-    </View>
+    </Background>
   );
 };
 

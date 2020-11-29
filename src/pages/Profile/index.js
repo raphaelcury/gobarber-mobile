@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 
-// import { Container } from './styles';
+import Background from '~/components/Background';
 
 const Profile = () => {
   return (
-    <View>
+    <Background>
       <Text>Profile</Text>
-    </View>
+    </Background>
   );
 };
 

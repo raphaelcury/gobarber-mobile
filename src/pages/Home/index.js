@@ -20,6 +20,7 @@ const Home = () => {
     <Tab.Navigator
       initialRouteName="Dashboard"
       tabBarOptions={{
+        keyboardHidesTabBar: true,
         activeTintColor: '#fff',
         inactiveTintColor: 'rgba(255,255,255,0.6)',
         style: {
